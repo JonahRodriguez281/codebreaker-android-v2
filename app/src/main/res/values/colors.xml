@@ -2,7 +2,7 @@
 <resources>
   <color name="colorPrimary">#666666</color>
   <color name="colorPrimaryDark">#000000</color>
-  <color name="colorAccent">#CC90FF</color>
+  <color name="colorAccent">#9900FF</color>
 
   <color name="ic_codebreaker_background">#000000</color>
 

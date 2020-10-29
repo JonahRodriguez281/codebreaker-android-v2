@@ -13,11 +13,13 @@ import androidx.preference.PreferenceManager;
 import edu.cnm.deepdive.codebreaker.R;
 import edu.cnm.deepdive.codebreaker.model.Code.Guess;
 import edu.cnm.deepdive.codebreaker.model.Game;
+import edu.cnm.deepdive.codebreaker.model.pojo.ScoreSummary;
 import edu.cnm.deepdive.codebreaker.service.GameRepository;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import java.security.SecureRandom;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 public class MainViewModel extends AndroidViewModel implements LifecycleObserver {
@@ -101,7 +103,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
               previousGuessCount += guessCount;
             })
             .subscribe(
-                () -> this.game.setValue(game),
+                () -> this.game.postValue(game),
                 throwable::postValue
             )
     );
@@ -126,6 +128,9 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     pending.add(disposable);
   }
 
+  public LiveData<List<ScoreSummary>> getSummaries() {
+    return repository.getSummaries();
+  }
   private void save(Game game) {
     pending.add(
         repository.save(game, timestamp, previousGuessCount)

@@ -6,6 +6,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import java.util.Date;
 
+@SuppressWarnings("NotNullFieldNotInitialized")
 @Entity
 public class Score {
 
@@ -13,7 +14,6 @@ public class Score {
   @ColumnInfo(name = "game_id")
   private long id;
 
-  @SuppressWarnings("NotNullFieldNotInitialized")
   @NonNull
   @ColumnInfo(index = true)
   private Date timestamp;

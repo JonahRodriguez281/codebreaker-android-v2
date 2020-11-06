@@ -60,15 +60,6 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     testRoundTrip();
   }
 
-  private void testRoundTrip() {
-    pending.add(
-        userRepository.getServerUserProfile()
-            .subscribe(
-                (user) -> Log.d(getClass().getSimpleName(), user.getDisplayName()),
-                throwable::postValue
-            )
-    );
-  }
 
   public LiveData<Game> getGame() {
     return game;
@@ -121,6 +112,16 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
             throwable::postValue
         );
     pending.add(disposable);
+  }
+
+  private void testRoundTrip() {
+    pending.add(
+        userRepository.getServerUserProfile()
+            .subscribe(
+                (user) -> Log.d(getClass().getSimpleName(), user.getDisplayName()),
+                throwable::postValue
+            )
+    );
   }
 
   public LiveData<List<ScoreSummary>> getSummaries() {

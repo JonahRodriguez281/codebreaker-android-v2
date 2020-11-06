@@ -46,6 +46,7 @@ public class GoogleSignInService {
   public Single<GoogleSignInAccount> refresh() {
     return Single.create((emitter) ->
         client.silentSignIn()
+            .addOnSuccessListener(this::setAccount)
             .addOnSuccessListener(emitter::onSuccess)
             .addOnFailureListener(emitter::onError)
     );

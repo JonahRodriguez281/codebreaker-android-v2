@@ -30,6 +30,7 @@
       android:id="@+id/submit"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:background="@color/colorAccent"
       android:layout_margin="@dimen/half_margin"
       android:text="@string/submit"/>
 
@@ -40,7 +41,7 @@
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:orientation="vertical"
-    android:background="@color/guess_background_color"
+    android:background="@color/colorPrimaryDark"
     android:padding="@dimen/half_static_spacing"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     app:layout_constraintTop_toTopOf="parent"
